@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Ideas collection rules
+    match /ideas/{ideaId} {
+      // Allow read access to all authenticated users
+      allow read: if request.auth != null;
+      
+      // Allow create access to authenticated users with verified email
+      allow create: if request.auth != null 
+        && request.auth.token.email_verified == true
+        && request.resource.data.authorId == request.auth.uid;
+      
+      // Allow update/delete access to the author of the idea (with verified email)
+      allow update, delete: if request.auth != null 
+        && request.auth.token.email_verified == true 
+        && resource.data.authorId == request.auth.uid;
+
+      // Likes subcollection
+      match /likes/{userId} {
+        allow create: if request.auth != null && request.auth.uid == userId;
+        allow delete: if request.auth != null && request.auth.uid == userId;
+        allow read: if true;
+      }
+
+      // Comments subcollection
+      match /comments/{commentId} {
+        allow create: if request.auth != null && request.resource.data.authorId == request.auth.uid;
+        allow delete: if request.auth != null && resource.data.authorId == request.auth.uid;
+        allow read: if true;
+      }
+    }
+    
+    // Default rule - deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /collabRequests/{requestId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        resource.data.requesterId == request.auth.uid ||
+        exists(/databases/$(database)/documents/ideas/$(resource.data.ideaId)) &&
+        get(/databases/$(database)/documents/ideas/$(resource.data.ideaId)).data.authorId == request.auth.uid
+      );
+    }
+  }
+} 

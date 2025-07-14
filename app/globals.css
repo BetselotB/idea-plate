@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Line clamp utilities */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Fix input text color issues */
+input, textarea, select {
+  color: #374151 !important; /* text-gray-700 */
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af !important; /* text-gray-400 */
+}
+
+/* Ensure proper contrast for form elements */
+input:focus, textarea:focus, select:focus {
+  color: #374151 !important;
+}
+
+/* Fix select dropdown text color */
+select option {
+  color: #374151 !important;
+  background-color: white !important;
+}
+
+/* Ensure proper text color for all form elements */
+.form-input, .form-textarea, .form-select {
+  color: #374151 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.95) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.animate-modalPop {
+  animation: modalPop 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes dropdownFade {
+  0% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-dropdownFade {
+  animation: dropdownFade 0.22s cubic-bezier(0.4,0,0.2,1);
+}
