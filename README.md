@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/ip-logo.png" alt="IdeaPlate Logo" width="120"/>
+  <img src="public/ip-logo.png" alt="IdeaPlate Logo" width="100"/>
 </p>
 # Idea Plate 💡
 

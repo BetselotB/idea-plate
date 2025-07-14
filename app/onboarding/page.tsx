@@ -18,7 +18,7 @@ export default function Onboarding() {
         "Roast, hype, or shamelessly copy other people's ideas",
         "No NDAs. No gatekeeping. Just pure, unfiltered idea chaos"
       ],
-      image: "/globe.svg"
+      image: "/ip-logo.png"
     }
   ];
 
