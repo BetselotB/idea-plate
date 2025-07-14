@@ -1,4 +1,3 @@
-![IdeaPlate Logo](public/globe.svg "IdeaPlate Logo")
 
 # Idea Plate 💡
 
