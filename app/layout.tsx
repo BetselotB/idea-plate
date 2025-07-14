@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: "A platform where people share their app, website, or business ideas that they can't build themselves. Give your ideas a chance to come to life.",
   keywords: "ideas, apps, websites, business, innovation, collaboration",
   authors: [{ name: "Idea Plate Team" }],
+  
 };
 
 export const viewport: Viewport = {
