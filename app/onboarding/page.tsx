@@ -35,8 +35,8 @@ export default function Onboarding() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <Image
-              src={steps[currentStep].image}
-              alt="IdeaPlate"
+              src="/ip-logo.png"
+              alt="IdeaPlate Logo"
               width={120}
               height={120}
               className="mx-auto mb-6"
