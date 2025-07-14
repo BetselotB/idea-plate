@@ -1,4 +1,6 @@
-
+<p align="center">
+  <img src="public/ip-logo.png" alt="IdeaPlate Logo" width="120"/>
+</p>
 # Idea Plate 💡
 
 Welcome to Idea Plate! This is a fun little platform where you can share your app, website, or business ideas that you just can't build yourself. Maybe someone else will pick them up and run with them!
